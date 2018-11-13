@@ -13,6 +13,7 @@ const express = require("express");
 const helmet = require("helmet");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 const PORT = process.env.PORT || 8080;
 
 const booksRoutes = require("./routes/books");
@@ -26,6 +27,9 @@ app.use(
     noCache: true
   })
 );
+
+app.use(cors());
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
